@@ -2,7 +2,7 @@
 
 using namespace scene;
 
-MainScene::MainScene() : COrthoCam() {
+MainScene::MainScene() : COrthoCam(), CParticle() {
 	this->intialize();
 }
 
@@ -13,14 +13,8 @@ void MainScene::run() {
 	auto curr_time = clock::now();
 	auto prev_time = curr_time;
 	std::chrono::nanoseconds curr_ns(0);
-	double nInput = 0;
-	Particle CParticle = Particle();
-	std::cout << "Trial X: ";
-	std::cin >> nInput;
-	CParticle.setVelocity(Vector((float)nInput, 0.0f, 0.0f));
-	//InputManager::getInstance()->askUserVelocity(&CParticle);
-	CParticle.setVelocity(Vector(0.0002f, 0.0f, 0.0f));
-	CParticle.setAcceleration(Vector(0.5f, 0.0f, 0.0f));
+	
+	this->CParticle.setAcceleration(Vector(0.5f, 0.0f, 0.0f));
 
 	std::cout << CParticle.getVelocity()->getX() << std::endl;
 
@@ -36,12 +30,12 @@ void MainScene::run() {
 			//std::cout << "MS: " << (float)ms.count() << "\n";
 			curr_ns -= curr_ns;
 			//std::cout << "P6 Update" << std::endl;
-			CParticle.Update((float)ms.count() / 1000);
+			this->CParticle.Update((float)ms.count() / 1000);
 		}
 
 		//std::cout << "Normal Update" << std::endl;
 		this->update();
-		this->vecModels[0]->getTransform()->setAtt(TransformAtt::TRANSLATE, CParticle.getPosition()->getCoordinates());
+		this->vecModels[0]->getTransform()->setAtt(TransformAtt::TRANSLATE, this->CParticle.getPosition()->getCoordinates());
 		this->render();
 
 		glfwSwapBuffers(this->pWindow);
@@ -52,6 +46,9 @@ void MainScene::run() {
 }
 
 void MainScene::intialize() {
+
+	InputManager::getInstance()->askUserVelocity(&this->CParticle);
+	
 	if (!glfwInit()) {
 		std::cout << "glfwInit has encountered an error!" << std::endl;
 	}

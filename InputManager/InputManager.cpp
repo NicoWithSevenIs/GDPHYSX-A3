@@ -25,9 +25,6 @@ void InputManager::askUserVelocity(Particle* pParticle) {
     std::cout << "Z: ";
     std::cin >> z;
 
-    /*std::cin >> this->sample;
-    std::cout << "Input done!" << std::endl;*/
-    //pParticle->getVelocity()->setX(x);
     pParticle->setVelocity(Vector(x, y, z));
     
 }

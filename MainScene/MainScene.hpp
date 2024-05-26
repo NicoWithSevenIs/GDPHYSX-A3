@@ -28,7 +28,7 @@ namespace scene {
 			GLFWwindow* pWindow;
 			std::vector<Model3D*> vecModels;
 			OrthoCam COrthoCam;
-			
+			Particle CParticle;
 		public:
 			MainScene();
 		public:
