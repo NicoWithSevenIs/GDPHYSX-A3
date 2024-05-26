@@ -15,7 +15,7 @@ void MainScene::run() {
 	std::chrono::nanoseconds curr_ns(0);
 	
 	this->CParticle.setPosition(Vector(0.0f, 0.0f, 0.0f));
-	//this->CParticle.setAcceleration(Vector(0.0f, -50.0f, 0.0f));
+	this->CParticle.setAcceleration(Vector(0.0f, -50.0f, 0.0f));
 
 	std::cout << CParticle.getVelocity()->getX() << std::endl;
 
@@ -48,7 +48,7 @@ void MainScene::run() {
 
 void MainScene::intialize() {
 
-	//InputManager::getInstance()->askUserVelocity(&this->CParticle);
+	InputManager::getInstance()->askUserVelocity(&this->CParticle);
 	
 	if (!glfwInit()) {
 		std::cout << "glfwInit has encountered an error!" << std::endl;
@@ -57,7 +57,7 @@ void MainScene::intialize() {
 	glfwMakeContextCurrent(this->pWindow);
 	gladLoadGL();
 
-	//glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
+	glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	ShaderManager::getInstance()->registerShaders();
 	this->createSphere();
