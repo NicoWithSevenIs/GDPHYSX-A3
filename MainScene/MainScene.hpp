@@ -16,6 +16,7 @@
 #include "chrono"
 #include "../Physics/Component/Particle/Particle.hpp"
 #include "../InputManager/InputManager.hpp"
+
 namespace scene {
 	using namespace model;
 	using namespace camera;

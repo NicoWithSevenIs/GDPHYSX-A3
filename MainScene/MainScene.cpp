@@ -13,11 +13,16 @@ void MainScene::run() {
 	auto curr_time = clock::now();
 	auto prev_time = curr_time;
 	std::chrono::nanoseconds curr_ns(0);
-
+	double nInput = 0;
 	Particle CParticle = Particle();
-	//InputManager::getInstance()->askUserVelocity(CParticle.getVelocity());
-	CParticle.setVelocity(Vector(1.0f/100.0f, 0.0f, 0.0f));
-	CParticle.setAcceleration(Vector(1.0f/-30.0f, 0.0f, 0.0f));
+	std::cout << "Trial X: ";
+	std::cin >> nInput;
+	CParticle.setVelocity(Vector((float)nInput, 0.0f, 0.0f));
+	//InputManager::getInstance()->askUserVelocity(&CParticle);
+	CParticle.setVelocity(Vector(0.0002f, 0.0f, 0.0f));
+	CParticle.setAcceleration(Vector(0.5f, 0.0f, 0.0f));
+
+	std::cout << CParticle.getVelocity()->getX() << std::endl;
 
 	while (!glfwWindowShouldClose(this->pWindow)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
