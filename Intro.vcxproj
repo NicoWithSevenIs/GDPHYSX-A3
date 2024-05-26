@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="Camera\Camera.hpp" />
     <ClInclude Include="Camera\OrthoCam\OrthoCam.hpp" />
+    <ClInclude Include="Config\Settings.hpp" />
     <ClInclude Include="InputManager\InputManager.hpp" />
     <ClInclude Include="MainScene\MainScene.hpp" />
     <ClInclude Include="Model3D\Model3D.hpp" />

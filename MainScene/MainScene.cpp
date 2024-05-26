@@ -14,7 +14,8 @@ void MainScene::run() {
 	auto prev_time = curr_time;
 	std::chrono::nanoseconds curr_ns(0);
 	
-	this->CParticle.setAcceleration(Vector(0.5f, 0.0f, 0.0f));
+	this->CParticle.setVelocity(Vector(100.0f, 0.0f, 0.0f));
+	this->CParticle.setAcceleration(Vector(-30.0f, 0.0f, 0.0f));
 
 	std::cout << CParticle.getVelocity()->getX() << std::endl;
 
@@ -47,14 +48,16 @@ void MainScene::run() {
 
 void MainScene::intialize() {
 
-	InputManager::getInstance()->askUserVelocity(&this->CParticle);
+	//InputManager::getInstance()->askUserVelocity(&this->CParticle);
 	
 	if (!glfwInit()) {
 		std::cout << "glfwInit has encountered an error!" << std::endl;
 	}
-	this->pWindow = glfwCreateWindow(600, 600, "Ong, Lance", NULL, NULL);
+	this->pWindow = glfwCreateWindow((int) SCREEN_WIDTH, (int) SCREEN_HEIGHT, "Ong, Lance", NULL, NULL);
 	glfwMakeContextCurrent(this->pWindow);
 	gladLoadGL();
+
+	glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	ShaderManager::getInstance()->registerShaders();
 	this->createSphere();
@@ -63,6 +66,7 @@ void MainScene::intialize() {
 void MainScene::createSphere() {
 	Model3D* pSphere = new Model3D("3D/sphere.obj");
 	pSphere->getTransform()->setAtt(TransformAtt::TRANSLATE, glm::vec3(0.0f, 0.0f, 0.0f));
+	pSphere->getTransform()->setAtt(TransformAtt::SCALE, glm::vec3(50.0f, 50.0f, 50.0f));
 	this->vecModels.push_back(pSphere);
 	
 }
