@@ -32,6 +32,7 @@ namespace scene {
 			std::vector<Model3D*> vecModels;
 			OrthoCam COrthoCam;
 			Particle CParticle;
+			SimController CSimController;
 		public:
 			MainScene();
 		public:

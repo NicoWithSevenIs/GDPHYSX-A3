@@ -2,7 +2,7 @@
 
 using namespace scene;
 
-MainScene::MainScene() : COrthoCam(), CParticle() {
+MainScene::MainScene() : COrthoCam(), CParticle(), CSimController() {
 	this->intialize();
 }
 
@@ -24,12 +24,15 @@ void MainScene::run() {
 		auto durr = std::chrono::duration_cast<std::chrono::nanoseconds>(curr_time - prev_time);
 		prev_time = curr_time;
 		curr_ns += durr;
+		
 		if (curr_ns >= time_step) {
 			auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(curr_ns);
 			//std::cout << "MS: " << (float)ms.count() << "\n";
 			curr_ns -= curr_ns;
 			//std::cout << "P6 Update" << std::endl;
 			this->CParticle.Update((float)ms.count() / 1000);
+			this->CSimController.invertVelocity(&this->CParticle, (float)ms.count()/1000);
+			
 		}
 
 		//std::cout << "Normal Update" << std::endl;
@@ -70,8 +73,6 @@ void MainScene::createSphere() {
 }
 
 void MainScene::update() {
-	SimController CSimController = SimController();
-	CSimController.invertVelocity(&this->CParticle);
 	this->vecModels[0]->getTransform()->calculateTransformMatrix();
 
 }
