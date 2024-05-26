@@ -22,8 +22,8 @@ void Particle::UpdatePosition(float time) {
 }
 
 void Particle::UpdateVelocity(float time) {
-	this->CAcceleration.setCoordinates(this->CAcceleration.scalarMultiply(time));
-	this->CVelocity.setCoordinates(this->CVelocity.add(this->CAcceleration));
+	glm::vec3 mUpdatedVelocity = this->CVelocity.getCoordinates() + (this->CAcceleration.getCoordinates() * time);
+	this->CVelocity.setCoordinates(mUpdatedVelocity);
 }
 
 void Particle::Update(float time) {

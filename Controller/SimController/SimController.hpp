@@ -7,7 +7,6 @@ namespace controller {
 	using namespace component;
 	class SimController {
 		private:
-			bool bEndSim;
 			float fTopThreshold;
 			float fBottomThreshold;
 			float fDuration;
