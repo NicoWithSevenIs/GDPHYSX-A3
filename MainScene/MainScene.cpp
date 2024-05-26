@@ -54,7 +54,7 @@ void MainScene::intialize() {
 	if (!glfwInit()) {
 		std::cout << "glfwInit has encountered an error!" << std::endl;
 	}
-	this->pWindow = glfwCreateWindow((int) SCREEN_WIDTH, (int) SCREEN_HEIGHT, "Ong, Lance", NULL, NULL);
+	this->pWindow = glfwCreateWindow((int) SCREEN_WIDTH, (int) SCREEN_HEIGHT, "Assignment3-Tolentino_Enrico_Ong_Lance", NULL, NULL);
 	glfwMakeContextCurrent(this->pWindow);
 	gladLoadGL();
 
