@@ -6,6 +6,7 @@ SimController::SimController() {
 	this->fTopThreshold = 350.0f;
 	this->fBottomThreshold = -350.0f;
 	this->fDuration = 0.0f;
+	this->bEndSim = false;
 }
 
 bool SimController::checkHitTop(Particle* pParticle) {
@@ -32,8 +33,8 @@ void SimController::invertVelocity(Particle* pParticle, float fTime) {
 	else {
 		if (this->fDuration > 0.0f) {
 			std::cout << "It took " << this->fDuration << " seconds for it to land." << std::endl;
-			exit(0);
-
+			this->bEndSim = true;
+	
 		}
 	}
 	

@@ -17,7 +17,7 @@ void MainScene::run() {
 	this->CParticle.setPosition(Vector(0.0f, -350.0f, 0.0f));
 	this->CParticle.setAcceleration(Vector(0.0f, -50.0f, 0.0f));
 
-	while (!glfwWindowShouldClose(this->pWindow)) {
+	while (!glfwWindowShouldClose(this->pWindow) && !this->CSimController.bEndSim) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		curr_time = clock::now();

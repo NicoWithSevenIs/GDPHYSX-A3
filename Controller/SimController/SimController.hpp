@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Physics/Component/Particle/Particle.hpp"
+#include "../../Config/Settings.hpp"
 #include "iostream"
 
 namespace controller {
@@ -10,6 +11,8 @@ namespace controller {
 			float fTopThreshold;
 			float fBottomThreshold;
 			float fDuration;
+		public:
+			bool bEndSim;
 		public:
 			SimController();
 		private:
