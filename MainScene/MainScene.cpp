@@ -14,10 +14,8 @@ void MainScene::run() {
 	auto prev_time = curr_time;
 	std::chrono::nanoseconds curr_ns(0);
 	
-	this->CParticle.setPosition(Vector(0.0f, 0.0f, 0.0f));
+	this->CParticle.setPosition(Vector(0.0f, -350.0f, 0.0f));
 	this->CParticle.setAcceleration(Vector(0.0f, -50.0f, 0.0f));
-
-	std::cout << CParticle.getVelocity()->getX() << std::endl;
 
 	while (!glfwWindowShouldClose(this->pWindow)) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -57,7 +55,7 @@ void MainScene::intialize() {
 	glfwMakeContextCurrent(this->pWindow);
 	gladLoadGL();
 
-	glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	ShaderManager::getInstance()->registerShaders();
 	this->createSphere();
@@ -72,6 +70,8 @@ void MainScene::createSphere() {
 }
 
 void MainScene::update() {
+	SimController CSimController = SimController();
+	CSimController.invertVelocity(&this->CParticle);
 	this->vecModels[0]->getTransform()->calculateTransformMatrix();
 
 }

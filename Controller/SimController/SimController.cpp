@@ -4,7 +4,7 @@ using namespace controller;
 
 SimController::SimController() {
 	this->fTopThreshold = 350.0f;
-	this->fBottomThreshold = 350.0f;
+	this->fBottomThreshold = -350.0f;
 }
 
 bool SimController::checkHitTop(Particle* pParticle) {
